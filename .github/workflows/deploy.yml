@@ -26,4 +26,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           source: "dist/*"                 # Archivos locales en la carpeta build para transferir
-          target: "/*"                # Directorio en el servidor IONOS (normalmente /htdocs/)
+          target: "/red"                # Directorio en el servidor IONOS (normalmente /htdocs/)
