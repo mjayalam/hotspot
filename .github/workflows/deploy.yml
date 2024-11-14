@@ -19,11 +19,11 @@ jobs:
         run: npm run build
 
       - name: Deploy to IONOS via SFTP
-        uses: cedrickring/secure-ftp-deploy@v1
+        uses: appleboy/scp-action@v0.1.2
         with:
           host: ${{ secrets.SFTP_DOMAIN }}
           port: 22                          # Puerto SFTP (normalmente 22)
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           source: "dist/*"                 # Archivos locales en la carpeta build para transferir
-          target: "/"                # Directorio en el servidor IONOS (normalmente /htdocs/)
+          target: "/*"                # Directorio en el servidor IONOS (normalmente /htdocs/)
