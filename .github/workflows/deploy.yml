@@ -25,5 +25,5 @@ jobs:
           port: 22                          # Puerto SFTP (normalmente 22)
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          source: "build/*"                 # Archivos locales en la carpeta build para transferir
+          source: "dist/*"                 # Archivos locales en la carpeta build para transferir
           target: "/kunden/homepages/20/d905729453/htdocs/red"                # Directorio en el servidor IONOS (normalmente /htdocs/)
