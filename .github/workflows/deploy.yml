@@ -19,7 +19,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to IONOS via SFTP
-        uses: appleboy/scp-action@v0.1.2
+        uses: salty-codes/sftp-deploy@v1.0.0
         with:
           host: ${{ secrets.SFTP_DOMAIN }}
           port: 22                          # Puerto SFTP (normalmente 22)
