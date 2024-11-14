@@ -1,4 +1,4 @@
-name: Deploy to IONOS
+name: Deploy to IONOS with SFTP
 
 on:
   push:
@@ -18,11 +18,13 @@ jobs:
       - name: Build the project
         run: npm run build
 
-      - name: Deploy to IONOS via FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.3.2
+      - name: Deploy to IONOS via SFTP
+        uses: appleboy/scp-action@v0.1.2
         with:
-          server: access905729453.webspace-data.io
+          host: ${{ secrets.SFTP_DOMAIN }}
+          port: 22                          # Puerto SFTP (normalmente 22)
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: dist/
-          server-dir: /htdocs/
+          source: "dist/*"                 # Archivos locales en la carpeta build para transferir
+          target: "/htdocs/"                # Directorio en el servidor IONOS (normalmente /htdocs/)
+          strip_components: 1               # Elimina el prefijo de directorio en los archivos transferidos
