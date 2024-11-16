@@ -1,10 +1,15 @@
-import { useEffect, useState } from 'react'
+import {  useState } from 'react'
 import { Card } from './components/Card';
 import {TextField } from './components/TextField';
 import { Loader } from './components/Loader';
 import { Modal } from './components/Modal';
 import { useIsMobile } from './hooks/useIsMobile';
-import './App.css'
+import './App.css';
+import { PhoneInput } from 'react-international-phone';
+import 'react-international-phone/style.css';
+
+
+const BASE_URL = '/images';
 
 function App() {
   const isMobile = useIsMobile();
@@ -14,6 +19,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [attemptSuccessful, setAttemptSuccesfull] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [phone, setPhone] = useState('');
   const styleMainContainer = {
     display: 'flex',
     flexDirection: 'row',
@@ -71,7 +77,7 @@ function App() {
   if(attemptSuccessful !== null && attemptSuccessful) {
     return (
       <div style={styleMainContainerSuccess} >
-        <img src={"/src/assets/logo.png"} style={{width: "289px",  height: "147px"}}/>
+        <img src={`${BASE_URL}/logo.png`} style={{width: "289px",  height: "147px"}}/>
           <Card title={"Conexión exitosa"} subtitle='Bienvenido a nuestra red WiFi. Mientras navegas, descubre nuestras sorpresas especiales del día. ¡Itadakimasu!'>
             <div className={"success-img"} style={{width: '400px', height: '100px'}}> </div>          
             <button>Cerrar</button>
@@ -84,7 +90,7 @@ function App() {
     <div style={!isMobile ? { ...styleMainContainer} : {}} >
       {isLoading && <Loader />}
       <div style={{textAlign: 'center'}}>
-        <img src={"/src/assets/logo.png"}/>
+        <img src={`${BASE_URL}/logo.png`}/>
         <h1 className={"welcome-title"}>¡BIENVENIDO!</h1>
         <h3 className={"welcome-subtitle"}>Conéctate y disfruta al máximo.</h3>
        </div>
@@ -93,6 +99,11 @@ function App() {
           <TextField placeholder='Nombre' value={name} onChange={handleOnChangeName} />
           <TextField placeholder='Apellido' value={lastName} onChange={handleOnChangeLastName} />
           <TextField type="email" placeholder='Email' value={email} onChange={handleOnChangeEmail} />
+          <PhoneInput
+            defaultCountry="mx"
+            value={phone}
+            onChange={(phone) => setPhone(phone)}
+          />
           <button>Conectarme</button>
         </form>
       </Card>
