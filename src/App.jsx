@@ -1,6 +1,11 @@
 import {  useState } from 'react'
 import { Card } from './components/Card';
-import {TextField } from './components/TextField';
+import { FormControl } from '@mui/material';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import { PhoneInputMUI } from './components/PhoneInput';
+//import {TextField } from './components/TextField';
 import { Loader } from './components/Loader';
 import { Modal } from './components/Modal';
 import { useIsMobile } from './hooks/useIsMobile';
@@ -31,7 +36,7 @@ function App() {
     flexDirection: 'column',
     alignItems: 'space-between'
   }
-  const handleOnSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     console.log("martin",e);
 
     e.preventDefault();
@@ -95,17 +100,25 @@ function App() {
         <h3 className={"welcome-subtitle"}>Conéctate y disfruta al máximo.</h3>
        </div>
      <Card title={"Registrate para conectarte al wifi"}>
-        <form onSubmit={(e) => handleOnSubmit(e)}>
-          <TextField placeholder='Nombre' value={name} onChange={handleOnChangeName} />
-          <TextField placeholder='Apellido' value={lastName} onChange={handleOnChangeLastName} />
-          <TextField type="email" placeholder='Email' value={email} onChange={handleOnChangeEmail} />
-          <PhoneInput
-            defaultCountry="mx"
-            value={phone}
-            onChange={(phone) => setPhone(phone)}
-          />
-          <button>Conectarme</button>
-        </form>
+     <Box
+      component="form"
+      onSubmit={handleSubmit}
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 2,
+        maxWidth: 400,
+        margin: '0 auto',
+      }}
+    >
+          <TextField label="Name" value={name} variant="outlined" fullWidth onChange={handleOnChangeName} />
+          <TextField placeholder='Apellido' value={lastName} fullWidth onChange={handleOnChangeLastName} />
+          <TextField type="email" placeholder='Email' value={email} fullWidth onChange={handleOnChangeEmail} />
+          <PhoneInputMUI onChange={(phone) => setPhone(phone)}/>
+          <Button type="submit" size="large" variant="contained" color="primary">
+        Conectarme
+      </Button>
+        </Box>
       </Card>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         "Algo Salio mal"
