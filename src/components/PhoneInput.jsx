@@ -29,9 +29,10 @@ export const PhoneInputMUI = ({ value, onChange, ...restProps }) => {
   return (
     <TextField
       variant="outlined"
-      label="Phone number"
+      label="Número de telefono"
       color="primary"
-      placeholder="Phone number"
+      placeholder="Telefono"
+      required
       value={inputValue}
       onChange={handlePhoneValueChange}
       type="tel"
@@ -41,7 +42,7 @@ export const PhoneInputMUI = ({ value, onChange, ...restProps }) => {
         startAdornment: (
           <InputAdornment
             position="start"
-            style={{ marginRight: '2px', marginLeft: '-8px',width: '100%' }}
+            style={{ marginRight: '2px', marginLeft: '-8px'}}
           >
             <Select
               MenuProps={{

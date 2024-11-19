@@ -3,12 +3,12 @@ body {
  
 }
 .welcome-title {
-  font-size: 64px;
+  font-size: 3.5rem;
   font-weight: 700;
   line-height: 80.96px;
 }
 .welcome-subtitle {
-  font-size: 24px;
+  font-size: 1.3rem;
   font-weight: 450;
   line-height: 30.36px;
 }
@@ -32,5 +32,19 @@ body {
   }
   40% {
     transform: scale(1);
+  }
+}
+
+.MuiButton-containedPrimary {
+  background-color: #262626 !important;
+  color: #fff;             /* Cambia el color del texto */
+}
+
+@media (width <= 400px) {
+  .welcome-title {
+    font-size: 1.8rem;
+  }
+  .welcome-subtitle {
+    font-size: 0.9rem;
   }
 }
