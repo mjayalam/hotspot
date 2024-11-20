@@ -1,21 +1,31 @@
-body {
 
- 
-}
 .welcome-title {
-  font-size: 3.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
-  line-height: 80.96px;
+  line-height: 30.96px;
 }
 .welcome-subtitle {
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 450;
-  line-height: 30.36px;
+  line-height: 20.86px;
+}
+.form-title{
+  color: #E12F32;
+  text-align:center;
+}
+.text-red{
+  color: #E12F32;
+}
+.f-input{
+  border-radius: 8px; 
 }
 #root {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: 10px;
+  height: 94vh  ;
+
 }
 
 .success-img {
@@ -40,11 +50,40 @@ body {
   color: #fff;             /* Cambia el color del texto */
 }
 
+.MuiBox-root {
+  max-width: 400px;
+}
+.MuiFormControlLabel-label {
+  font-size: 0.6rem !important;
+  font-weight: 400;
+  color: #797979;
+
+}
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation3.formPaper.css-1gtchvp-MuiPaper-root{
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px; 
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px; 
+}
+/* @media (width <= 768px) {
+   
+} */
 @media (width <= 400px) {
+  #root {
+    justify-content: center;
+  }
   .welcome-title {
-    font-size: 1.8rem;
+    font-size: 1rem;
   }
   .welcome-subtitle {
     font-size: 0.9rem;
+  }
+  .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation3.formPaper.css-1gtchvp-MuiPaper-root{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;  
+  }
+  .MuiFormControlLabel-label {
+    font-size: 0.4rem;
+    font-weight: 400;
   }
 }

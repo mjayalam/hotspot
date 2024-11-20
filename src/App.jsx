@@ -1,8 +1,8 @@
-import {  useState } from 'react'
-import { Card } from './components/Card';
-import { FormControl } from '@mui/material';
+import { useState } from 'react'
+import FormControlLabel from '@mui/material/FormControlLabel';
 import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
+import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -15,7 +15,7 @@ import 'react-international-phone/style.css';
 
 
 const BASE_URL = '/images';
-const username =  'captive_portal';
+const username = 'captive_portal';
 const password = '5Y*@*hbN45Xmzf';
 function App() {
   const isMobile = useIsMobile();
@@ -30,13 +30,14 @@ function App() {
     display: 'flex',
     flexDirection: 'row',
     flexWrap: "wrap",
-    justifyContent: 'space-between'
+
   }
   const styleMainContainerSuccess = {
     textAlign: 'center',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'space-between'
+    alignItems: 'center',
+    gap: '3rem'
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,6 +48,8 @@ function App() {
       password,
     });
     console.log(data.toString());
+    setAttemptSuccesfull(true);
+
     try {
       const response = await fetch(url, {
         method: "POST",
@@ -110,78 +113,87 @@ function App() {
     //   //setResponse({ error: error.message });
     // }
   }
- 
+
   const handleOnChangeName = (e) => setName(e.target.value);
   const handleOnChangeLastName = (e) => setLastName(e.target.value);
   const handleOnChangeEmail = (e) => setEmail(e.target.value);
-  if(attemptSuccessful !== null && attemptSuccessful) {
+  if (attemptSuccessful !== null && attemptSuccessful) {
     return (
       <div style={styleMainContainerSuccess} >
-        <img src={`${BASE_URL}/logo.png`} style={{width: "289px",  height: "147px"}}/>
-          <Card title={"Conexión exitosa"} subtitle='Bienvenido a nuestra red WiFi. Mientras navegas, descubre nuestras sorpresas especiales del día. ¡Itadakimasu!'>
-            <div className={"success-img"} style={{width: '400px', height: '100px'}}> </div>          
-            <button>Cerrar</button>
-            <button>Descrubrir ahora</button>
-          </Card>
+        <img src={`${BASE_URL}/logo.png`} style={{ width: "289px", height: "147px" }} />
+        <Paper className='formPaper' square={false} elevation={3}>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+
+              gap: '1rem',
+              margin: '0 auto',
+              padding: 2
+            }}
+          >
+            <h1 className={"welcome-title form-title"}>Conexión exitosa</h1>
+            <p className={"welcome-subtitle"}>Bienvenido a nuestra red WiFi. Mientras navegas, descubre nuestras sorpresas especiales del día. <span className='text-red'> ¡Itadakimasu! </span> </p>
+            <img src={`${BASE_URL}/promo.png`} style={{ width: "389px", height: "147px" }} />
+            <div style={{ display: "flex", justifyContent: 'space-between' }}>
+
+              <Button type="submit" size="large" variant="outlined" color="#262626">
+                Cerrar
+              </Button>
+              <Button type="submit" size="large" variant="contained" color="primary">
+                Descubrir ahora
+              </Button>
+            </div>
+          </Box>
+        </Paper>
       </div>
     )
   }
   return (
-    <div id="main-container" style={{...styleMainContainer}} >
+    <div id="main-container" style={{ ...styleMainContainer }} >
       {isLoading && <Loader />}
-      <div style={{textAlign: 'center'}}>
-        <img src={`${BASE_URL}/logo.png`} loading="lazy"/>
+
+      <div style={{ textAlign: 'center' }}>
+        <img src={`${BASE_URL}/logo.png`} loading="lazy" />
         <h1 className={"welcome-title"}>¡BIENVENIDO!</h1>
         <h3 className={"welcome-subtitle"}>Conéctate y disfruta al máximo.</h3>
-       </div>
-     
-       {/* <Stack direction="column" spacing={2} gap={5}>
-      <Paper square={false}>
-      <h3>Registrate para conectarte al wif</h3>
-          <TextField label="Nombre" required value={name} variant="outlined" fullWidth onChange={handleOnChangeName} />
-          <TextField label="Apellido" required value={lastName} variant="outlined" fullWidth onChange={handleOnChangeLastName} />
-          <TextField label="Email" required type="email" value={email}  variant="outlined" fullWidth onChange={handleOnChangeEmail} />
-          <PhoneInputMUI onChange={(phone) => setPhone(phone)}/>
-          
-          <Button type="submit" size="large" variant="contained" color="primary">
-            Conectarme
-          </Button>
-      </Paper> 
-   
-    </Stack>*/}
-<Paper square={false}>
-     <Box
-      component="form"
-      onSubmit={handleSubmit}
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 2,
-        margin: '0 auto',
-        padding: 2
-      }}
-    >
-        
-          <h3>Registrate para conectarte al wifi</h3>
-          <TextField label="Nombre"  value={name} variant="outlined" fullWidth onChange={handleOnChangeName} />
-          <TextField label="Apellido"  value={lastName} variant="outlined" fullWidth onChange={handleOnChangeLastName} />
-          <TextField label="Correo electrónico"  type="email" value={email}  variant="outlined" fullWidth onChange={handleOnChangeEmail} />
-          <PhoneInputMUI onChange={(phone) => setPhone(phone)}/>
-          
-          <Button type="submit" size="large" variant="contained" color="primary">
-            Conectarme
-          </Button>
-         
-        </Box>
-        </Paper>
+      </div>
 
-     
+      <Paper className='formPaper' square={false} elevation={3}>
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 2,
+            margin: '0 auto',
+            padding: 2
+          }}
+        >
+
+          <h3 className='form-title'>Registrate para conectarte al wifi</h3>
+          <TextField sx={{ borderRadius: '5px' }} label="Nombre" value={name} variant="outlined" fullWidth onChange={handleOnChangeName} />
+          <TextField className='f-input' label="Apellido" value={lastName} variant="outlined" fullWidth onChange={handleOnChangeLastName} />
+          <TextField className='f-input' label="Correo electrónico" type="email" value={email} variant="outlined" fullWidth onChange={handleOnChangeEmail} />
+          <PhoneInputMUI onChange={(phone) => setPhone(phone)} />
+          <FormControlLabel className='font-size-checkbox' control={<Checkbox defaultChecked />} label="Me gustaría recibir correos electrónicos de Yamamoto con ofertas exclusivas, promociones, novedades y ofertas de último minuto." />
+          <Button type="submit" size="large" variant="contained" color="primary">
+            Conectarme
+          </Button>
+
+        </Box>
+      </Paper>
+
+
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         "Algo Salio mal"
       </Modal>
-     
+
     </div>
-   
+
   )
 }
 

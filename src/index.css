@@ -38,6 +38,12 @@ a:hover {
   justify-content: center;
   align-items: center;
   width: 100%;
+  gap: 1rem;
 }
 
+@media (width <= 810px) {
+  #root {
+    justify-content: center !important;
+  }
 
+}
