@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Stack from '@mui/material/Stack';
+import MailchimpSubscribe from 'react-mailchimp-subscribe';
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
@@ -15,8 +16,11 @@ import 'react-international-phone/style.css';
 
 
 const BASE_URL = '/images';
-const username = 'captive_portal';
-const password = '5Y*@*hbN45Xmzf';
+const mailchimp_url = 'https://restauranteyamamoto.us20.list-manage.com/subscribe/post?u=fcf44a2f37a1160cf7fcdd4dd&amp;id=c606e4c0db&amp;f_id=00e508e3f0';
+//const username = 'captive_portal';
+//const password = '5Y*@*hbN45Xmzf';
+const username = 'yamamoto';
+const password = 'yamamoto';
 function App() {
   const isMobile = useIsMobile();
   const [name, setName] = useState('');
@@ -37,12 +41,19 @@ function App() {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: '3rem'
+    gap: '1rem',
+    justifyContent: 'center'
+  }
+  const btnDiscovery = () => {
+    let instaPage = 'https://www.instagram.com/restaurantyamamoto?igsh=dnBzamtzZWV5OG5k'
+    const loc = document.location;
+    loc.assign(instaPage);
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const url = 'http://10.10.0.1/login';
     //const url = 'http://189.174.109.137/login';
-    const url = 'https://nodejs-serverless-function-express-six-pi.vercel.app/api/hello.ts'
+    //const url = 'https://nodejs-serverless-function-express-six-pi.vercel.app/api/hello.ts'
     const data = new URLSearchParams({
       username,
       password,
@@ -52,6 +63,7 @@ function App() {
 
     try {
       const response = await fetch(url, {
+        //mode: 'no-cors',
         method: "POST",
         headers: {
           //"Content-Type": "application/json",
@@ -120,31 +132,43 @@ function App() {
   if (attemptSuccessful !== null && attemptSuccessful) {
     return (
       <div style={styleMainContainerSuccess} >
-        <img src={`${BASE_URL}/logo.png`} style={{ width: "289px", height: "147px" }} />
-        <Paper className='formPaper' square={false} elevation={3}>
+        <img src={`${BASE_URL}/logo.png`} style={{ width: "230px", height: "120px" }} />
+        <Paper id="success-pop" className='formPaper' square={false} elevation={3}>
           <Box
             component="form"
             onSubmit={handleSubmit}
             sx={{
               display: 'flex',
               flexDirection: 'column',
-
+              width: '100%',
               gap: '1rem',
               margin: '0 auto',
-              padding: 2
+              padding: 2,
+
             }}
           >
-            <h1 className={"welcome-title form-title"}>Conexión exitosa</h1>
-            <p className={"welcome-subtitle"}>Bienvenido a nuestra red WiFi. Mientras navegas, descubre nuestras sorpresas especiales del día. <span className='text-red'> ¡Itadakimasu! </span> </p>
-            <img src={`${BASE_URL}/promo.png`} style={{ width: "389px", height: "147px" }} />
-            <div style={{ display: "flex", justifyContent: 'space-between' }}>
-
-              <Button type="submit" size="large" variant="outlined" color="#262626">
+            <h1 className={"welcome-title form-title"}>¡Conexión Exitosa!</h1>
+            <p className={"welcome-subtitle-pop"}>Bienvenido a nuestra red WiFi. Mientras navegas, descubre nuestras sorpresas especiales del día. <span className='text-red'> ¡Itadakimasu! </span> </p>
+            <img src={`${BASE_URL}/promo.png`} style={{ width: "471px", height: "147px", marginBottom: '1.3rem' }} />
+            <div style={{ display: "flex", justifyContent: 'space-around', width: '100%' }}>
+              <Button
+                className='btn-form'
+                type="submit"
+                size="large"
+                variant="outlined"
+                color="#262626">
                 Cerrar
               </Button>
-              <Button type="submit" size="large" variant="contained" color="primary">
+              <Button
+                className='btn-form'
+                onClick={btnDiscovery}
+                type="submit"
+                size="large"
+                variant="contained"
+                color="primary">
                 Descubrir ahora
               </Button>
+             
             </div>
           </Box>
         </Paper>
@@ -157,8 +181,11 @@ function App() {
 
       <div style={{ textAlign: 'center' }}>
         <img src={`${BASE_URL}/logo.png`} loading="lazy" />
-        <h1 className={"welcome-title"}>¡BIENVENIDO!</h1>
-        <h3 className={"welcome-subtitle"}>Conéctate y disfruta al máximo.</h3>
+        <div className='welcome-div'>
+          <h1 className={"welcome-title"}>¡BIENVENIDO!</h1>
+          <h3 className={"welcome-subtitle"}>Conéctate y disfruta al máximo.</h3>
+        </div>
+
       </div>
 
       <Paper className='formPaper' square={false} elevation={3}>
@@ -173,7 +200,10 @@ function App() {
             padding: 2
           }}
         >
-
+        {/* <MailchimpSubscribe
+        
+        
+        /> */}
           <h3 className='form-title'>Registrate para conectarte al wifi</h3>
           <TextField sx={{ borderRadius: '5px' }} label="Nombre" value={name} variant="outlined" fullWidth onChange={handleOnChangeName} />
           <TextField className='f-input' label="Apellido" value={lastName} variant="outlined" fullWidth onChange={handleOnChangeLastName} />
@@ -183,7 +213,7 @@ function App() {
           <Button type="submit" size="large" variant="contained" color="primary">
             Conectarme
           </Button>
-
+          <p className='text-tems'>Al registrarse, aceptas todos los <span className='terms-and-conditions'> Términos y Condiciones. </span></p>
         </Box>
       </Paper>
 
