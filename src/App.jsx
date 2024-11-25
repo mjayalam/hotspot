@@ -47,84 +47,7 @@ const password = 'yamamoto';
 //   </>
 //   )
 // }
-const successConection = (BASE_URL, handleSubmit, btnDiscovery, styleMainContainerSuccess) => {
-  return (<div style={styleMainContainerSuccess} >
-    <img src={`${BASE_URL}/logo.png`} style={{ width: "230px", height: "120px" }} />
-    <Paper id="success-pop" className='formPaper' square={false} elevation={3}>
-      <Box
-        component="form"
-        onSubmit={handleSubmit}
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          width: '100%',
-          gap: '1rem',
-          margin: '0 auto',
-          padding: 2,
 
-        }}
-      >
-        <h1 className={"welcome-title form-title"}>¡Conexión Exitosa!</h1>
-        <p className={"welcome-subtitle-pop"}>Bienvenido a nuestra red WiFi. Mientras navegas, descubre nuestras sorpresas especiales del día. <span className='text-red'> ¡Itadakimasu! </span> </p>
-        <img className='img-logo-pop'
-          src={`${BASE_URL}/promo.png`}
-          style={{ marginBottom: '1.3rem' }} />
-        <div style={{ display: "flex", justifyContent: 'space-around', width: '100%' }}>
-          <Button
-            className='btn-form'
-            type="submit"
-            size="large"
-            variant="outlined"
-            color="#262626">
-            Cerrar
-          </Button>
-          <Button
-            className='btn-form'
-            onClick={btnDiscovery}
-            type="submit"
-            size="large"
-            variant="contained"
-            color="primary">
-            Descubrir ahora
-          </Button>
-
-        </div>
-      </Box>
-    </Paper>
-  </div>)
-}
-const errorConection = (handleSubmit, styleMainContainerSuccess) => {
-  setShowForm(true)
-  return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit}
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        width: '100%',
-        gap: '1rem',
-        margin: '0 auto',
-        padding: 2,
-
-      }}
-    >
-      <img
-        src={`${BASE_URL}/img-icono.png`}
-        style={{ height: '76px', width: '60px' }} />
-      <h1 className={"error-title"}>Error de Conexión</h1>
-      <p className={"welcome-subtitle-pop"}> No es posible completar el registro o la conexión en este momento. Inténtalo nuevamente más tarde. </p>
-      <Button
-
-        type="submit"
-        size="large"
-        variant="text"
-        color="#262626">
-        Ok
-      </Button>
-    </Box>
-  )
-}
 
 function App() {
   let _email, _name, _lastname, _phone;
@@ -136,7 +59,7 @@ function App() {
   const [attemptSuccessful, setAttemptSuccesfull] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [phone, setPhone] = useState('');
-  const [showForm, setShowForm] = useState(true);
+  const [errorKey, setErrorKey] = useState('key');
   //const [isMailchimpLoading, setIsMailchimpLoading ]
   const styleMainContainer = {
     display: 'flex',
@@ -164,7 +87,7 @@ function App() {
       'LNAME': lastName,
       'EMAIL': email,
       'PHONE': phone
-    })
+    });
     // email &&
     // name &&
     // email.indexOf("@") > -1 &&
@@ -175,12 +98,117 @@ function App() {
     //   PHONE: phone
     // });
   }
-  const handleSuccessScreen = () => {
-    setAttemptSuccesfull(true);
-    return null;
+
+  const successConection = (BASE_URL, handleSubmit, btnDiscovery, styleMainContainerSuccess) => {
+
+    return (<div style={styleMainContainerSuccess} >
+      <img src={`${BASE_URL}/logo.png`} style={{ width: "230px", height: "120px" }} />
+      <Paper id="success-pop" className='formPaper' square={false} elevation={3}>
+        <Box
+          component="form"
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            width: '100%',
+            gap: '1rem',
+            margin: '0 auto',
+            padding: 2,
+  
+          }}
+        >
+          <h1 className={"welcome-title form-title"}>¡Conexión Exitosa!</h1>
+          <p className={"welcome-subtitle-pop"}>Bienvenido a nuestra red WiFi. Mientras navegas, descubre nuestras sorpresas especiales del día. <span className='text-red'> ¡Itadakimasu! </span> </p>
+          <img className='img-logo-pop'
+            src={`${BASE_URL}/promo.png`}
+            style={{ marginBottom: '1.3rem' }} />
+          <div style={{ display: "flex", justifyContent: 'space-around', width: '100%' }}>
+            <Button
+              className='btn-form'
+              size="large"
+              variant="outlined"
+              color="#262626">
+              Cerrar
+            </Button>
+            <Button
+              className='btn-form'
+              onClick={btnDiscovery}
+              type="submit"
+              size="large"
+              variant="contained"
+              color="primary">
+              Descubrir ahora
+            </Button>
+  
+          </div>
+        </Box>
+      </Paper>
+    </div>)
+  }
+
+  const errorConection = (handleSubmit, BASE_URL) => {
+
+    return (
+      <Paper id="success-pop" className='formPaper' square={false} elevation={3}>
+     
+      <Box
+        component="form"
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: '100%',
+          gap: '1rem',
+          margin: '0 auto',
+          padding: 2,
+  
+        }}
+      >
+        <img
+          src={`${BASE_URL}/img-icono.png`}
+          style={{ height: '76px', width: '60px' }} />
+        <h1 className={"error-title"}>Error de Conexión</h1>
+        <p className={"welcome-subtitle-pop"}> No es posible completar el registro o la conexión en este momento. Inténtalo nuevamente más tarde. </p>
+        <Button
+          size="large"
+          variant="text"
+          color="#262626">
+          Ok
+        </Button>
+      </Box>
+      </Paper>
+    )
+  }
+  const errorsText = {
+    name: 'Por favor, ingresa un nombre válido.',
+    lastname: 'Por favor, ingresa un apellido válido.',
+    email: 'Por favor, ingresa un correo electrónico válido.',
+    phone: 'Por favor, ingresa un número de teléfono válido.'
+
+  }
+  const isValidForm = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\+?(\d{1,3})?[-.\s]?(\(?\d{1,4}\)?)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/;
+    if(!/^[a-zA-Z]+$/.test(name)) {
+      setErrorKey('name');
+      return false;
+    }
+    if(!/^[a-zA-Z]+$/.test(lastName)) {
+      setErrorKey('lastname')
+      return false
+    }
+    if(!emailRegex.test(email)) { 
+      setErrorKey('email');
+      return false;
+    }
+    if(!phoneRegex.test(phone)) {
+      setErrorKey('phone');
+      return false;
+    }
+    return true;
+
   }
   const handleSubmit = async (e, subscribe) => {
     e.preventDefault();
+    if(!isValidForm()) return;
     const url = 'http://10.10.0.1/login';
 
     const data = new URLSearchParams({
@@ -189,6 +217,7 @@ function App() {
     });
 
     try {
+      setIsLoading(true);
       const response = await fetch(url, {
         //mode: 'no-cors',
         method: "POST",
@@ -199,15 +228,12 @@ function App() {
         body: data.toString(),
       });
       console.log("martin response", response);
-      // if (response.redirected) {
-      //   console.log("Login successful! Redirecting to:", response.url);
-      //   window.location.href = response.url; // Follow the redirect
-      // } else {
-      //   const text = await response.text();
-      //   console.log("Login response:", text);
-      // }
+      setIsLoading(false);
+      setErrorKey('');
     } catch (error) {
+      setIsLoading(false);
       submit(subscribe);
+      setErrorKey('');
       console.error("Error during login:", error);
     }
   }
@@ -215,51 +241,42 @@ function App() {
   const handleOnChangeName = (e) => setName(e.target.value);
   const handleOnChangeLastName = (e) => setLastName(e.target.value);
   const handleOnChangeEmail = (e) => setEmail(e.target.value);
-  if (attemptSuccessful !== null && attemptSuccessful) {
-    return (
-      errorConection(handleSubmit)
-    )
-  } else {
-    successConection(BASE_URL, handleSubmit, btnDiscovery, styleMainContainerSuccess)
-
-  }
-
 
   return (
-    <div id="main-container" style={{ ...styleMainContainer }} >
+    <>
       {isLoading && <Loader />}
 
-      <div style={{ textAlign: 'center' }}>
-        <img src={`${BASE_URL}/logo.png`} loading="lazy" />
-        <div className='welcome-div'>
-          <h1 className={"welcome-title"}>¡BIENVENIDO!</h1>
-          <h3 className={"welcome-subtitle"}>Conéctate y disfruta al máximo.</h3>
-        </div>
-
-      </div>
-
-      <Paper className='formPaper' square={false} elevation={3}>
-        <Box
-          id="principal-form"
-          component="form"
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 2,
-            margin: '0 auto',
-            padding: 2
-          }}
-        >
-          <MailchimpSubscribe
-            url={mailchimp_url}
-            render={({ subscribe, status, message }) => (
-              <>
-            
+      <MailchimpSubscribe
+        url={mailchimp_url}
+        render={({ subscribe, status, message }) => (
+          <>
+          { status == null && (
+            <div id="main-container" style={{ ...styleMainContainer }} >
+            <div>
+              <div style={{ textAlign: 'center' }}>
+                <img src={`${BASE_URL}/logo.png`} loading="lazy" />
+                <div className='welcome-div'>
+                  <h1 className={"welcome-title"}>¡BIENVENIDO!</h1>
+                  <h3 className={"welcome-subtitle"}>Conéctate y disfruta al máximo.</h3>
+                </div>
+              </div>
+              <Paper className='formPaper' square={false} elevation={3}>
+                <Box
+                  id="principal-form"
+                  component="form"
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 2,
+                    margin: '0 auto',
+                    padding: 2
+                  }}
+                >
                   <h3 className='form-title'>Registrate para conectarte al wifi</h3>
-                  <TextField ref={(name) => (_name = name)} sx={{ borderRadius: '5px' }} label="Nombre" value={name} variant="outlined" fullWidth onChange={handleOnChangeName} />
-                  <TextField ref={(lastname) => (_lastname = lastname)} className='f-input' label="Apellido" value={lastName} variant="outlined" fullWidth onChange={handleOnChangeLastName} />
-                  <TextField ref={(email) => (_email = email)} className='f-input' label="Correo electrónico" type="email" value={email} variant="outlined" fullWidth onChange={handleOnChangeEmail} />
-                  <PhoneInputMUI ref={(phone) => (_phone = phone)} onChange={(phone) => setPhone(phone)} />
+                  <TextField required error={errorKey === 'name'} helperText={errorKey === 'name' && errorsText[errorKey]}  ref={(name) => (_name = name)} sx={{ borderRadius: '5px' }} label="Nombre" value={name} variant="outlined" fullWidth onChange={handleOnChangeName} />
+                  <TextField required error={errorKey === 'lastname'} helperText={errorKey === 'lastname'&& errorsText[errorKey]}  ref={(lastname) => (_lastname = lastname)} className='f-input' label="Apellido" value={lastName} variant="outlined" fullWidth onChange={handleOnChangeLastName} />
+                  <TextField required error={errorKey === 'email'} helperText={errorKey === 'email' && errorsText[errorKey]}  ref={(email) => (_email = email)} className='f-input' label="Correo electrónico" type="email" value={email} variant="outlined" fullWidth onChange={handleOnChangeEmail} />
+                  <PhoneInputMUI error={errorKey === 'phone'} helperText={errorKey === 'phone' && errorsText[errorKey]}  ref={(phone) => (_phone = phone)} onChange={(phone) => setPhone(phone)} />
                   <FormControlLabel className='font-size-checkbox' control={<Checkbox defaultChecked />} label="Me gustaría recibir correos electrónicos de Yamamoto con ofertas exclusivas, promociones, novedades y ofertas de último minuto." />
                   <Button onClick={(e) => {
                     handleSubmit(e, subscribe, status);
@@ -267,23 +284,19 @@ function App() {
                     Conectarme
                   </Button>
                   <p className='text-tems'>Al registrarse, aceptas todos los <span className='terms-and-conditions'> Términos y Condiciones. </span></p>
+                </Box>
+              </Paper>
+            </div>
+            </div>
+          ) }
+        {status === 'loading' && <Loader />}
+        {status === 'error' && errorConection(handleSubmit, BASE_URL, message)}
+        {status === 'success' && successConection(BASE_URL,  handleSubmit, btnDiscovery, styleMainContainerSuccess)}
+          </>
 
-             
-                <h4>{status !== null && status !== 'loading' && (() => handleSuccessScreen())}</h4>
-                <h4>{status === 'error' && errorConection() }</h4>
-                <h4>{message}</h4>
-              </>
-            )}
-          />
-        </Box>
-      </Paper>
-
-
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        "Algo Salio mal"
-      </Modal>
-
-    </div>
+        )}
+      />
+    </>
 
   )
 }

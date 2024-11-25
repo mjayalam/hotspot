@@ -222,10 +222,8 @@ div#success-pop {
   }
 }
 
-.iti__flag-container {
-  display: none !important; /* Oculta las banderas completamente */
-}
-
-.iti__selected-flag .iti__selected-dial-code {
-  padding-left: 0 !important; /* Ajusta el espaciado */
+.error-text {
+  margin: 0;
+  font-size: 0.5rem;
+  color: #E73A4E;
 }

@@ -7,7 +7,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   defaultCountries,
   FlagImage,
@@ -16,6 +16,7 @@ import {
 } from 'react-international-phone';
 
 export const PhoneInputMUI = ({ value, onChange, ref, ...restProps }) => {
+
   const { inputValue, handlePhoneValueChange, inputRef, country, setCountry } =
     usePhoneInput({
       defaultCountry: 'mx',
@@ -81,7 +82,7 @@ export const PhoneInputMUI = ({ value, onChange, ref, ...restProps }) => {
               value={country.iso2}
               onChange={(e) => setCountry(e.target.value)}
               renderValue={(value) => (
-                <FlagImage iso2={value} style={{ display: 'flex' }} />
+                <FlagImage  src={`/flags/${country.iso2}.svg`} iso2={value} style={{ display: 'flex' }} />
               )}
             >
               {defaultCountries.map((c) => {
@@ -89,6 +90,7 @@ export const PhoneInputMUI = ({ value, onChange, ref, ...restProps }) => {
                 return (
                   <MenuItem key={country.iso2} value={country.iso2}>
                     <FlagImage
+                      src={`/flags/${country.iso2}.svg`}
                       iso2={country.iso2}
                       style={{ marginRight: '8px' }}
                     />
