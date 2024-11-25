@@ -37,11 +37,13 @@
 }
 
 .terms-and-conditions {
-  text-decoration: underline;
-  text-decoration-line: underline;
-  text-decoration-style: solid;
+  text-decoration: underline !important;
+  text-decoration-line: underline !important;
+  text-decoration-style: solid !important;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  font-size: 12px !important;
+  color: #797979 !important;
 }
 
 form#principal-form {
@@ -177,6 +179,7 @@ div#success-pop {
     justify-content: center;
     display: flex;
     align-items: center;
+  
   }
 
   .css-nqstft {
