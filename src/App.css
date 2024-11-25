@@ -1,6 +1,9 @@
 .welcome-div {
   margin-top: 4rem;
 }
+.showForm{
+  display: none;
+}
 
 .welcome-title {
   font-size: 2.4rem;
@@ -18,6 +21,7 @@
   font-size: 0.9rem;
   font-weight: 450;
   line-height: 21px;
+  font-family: 'DM Sans', sans-serif;
 }
 
 .text-tems {
@@ -32,19 +36,16 @@
   color: #797979;
 }
 
-.btn-form {
-  min-width: 45% !important;
-}
-
 .terms-and-conditions {
   text-decoration: underline;
-
-
   text-decoration-line: underline;
   text-decoration-style: solid;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+}
 
+form#principal-form {
+  max-width: 400px;
 }
 
 .css-1nvvmwq {
@@ -53,12 +54,12 @@
 
 .form-title {
   color: #E12F32;
-  font-size: 25px;
+  font-size: 23px;
   font-weight: 700;
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-
+  font-family: Poppins;
 }
 
 .text-red {
@@ -84,6 +85,7 @@
 #root {
   display: flex;
   flex-direction: row;
+  font-family: Poppins;
   justify-content: space-between;
   padding: 10px;
   height: 94vh;
@@ -139,7 +141,35 @@
   fill: #E12F32 !important;
 }
 
+.img-logo-pop {
+  width: 100%;
+  height: 147px !important;
+}
+
+div#success-pop {
+  max-width: 510px;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.error-title {
+
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 23px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+
+}
+
 @media (width >=768px) {
+
+  .btn-form {
+    min-width: 45% !important;
+  }
 
   div#success-pop {
     max-width: 510px;
@@ -152,11 +182,21 @@
   .css-nqstft {
     gap: 0 !important;
   }
+
+  .img-logo-pop {
+    width: 471px !important;
+    height: 147px !important;
+  }
 }
 
 @media (width <=400px) {
   #root {
     justify-content: center;
+  }
+
+  .btn-form {
+    width: 45% !important;
+    line-height: 1.3 !important;
   }
 
   .welcome-title {
@@ -176,4 +216,16 @@
     font-size: 0.4rem;
     font-weight: 400;
   }
+
+  .img-logo-pop {
+    width: 100% !important;
+  }
+}
+
+.iti__flag-container {
+  display: none !important; /* Oculta las banderas completamente */
+}
+
+.iti__selected-flag .iti__selected-dial-code {
+  padding-left: 0 !important; /* Ajusta el espaciado */
 }

@@ -15,7 +15,7 @@ import {
   usePhoneInput,
 } from 'react-international-phone';
 
-export const PhoneInputMUI = ({ value, onChange, ...restProps }) => {
+export const PhoneInputMUI = ({ value, onChange, ref, ...restProps }) => {
   const { inputValue, handlePhoneValueChange, inputRef, country, setCountry } =
     usePhoneInput({
       defaultCountry: 'mx',
@@ -28,6 +28,7 @@ export const PhoneInputMUI = ({ value, onChange, ...restProps }) => {
 
   return (
     <TextField
+      ref={ref}
       variant="outlined"
       label="Número de telefono"
       color="primary"
