@@ -62,24 +62,21 @@ function App() {
   const [errorKey, setErrorKey] = useState('key');
   const [termsandConditions, setTermsandConditions] = useState(false);
   const [closeTermsandConditions, setClosetermsandConditions] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const styleMainContainer = {
     display: 'flex',
     flexDirection: 'row',
     flexWrap: "wrap",
 
   }
-  const styleMainContainerSuccess = {
-    textAlign: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '1rem',
-    justifyContent: 'center'
-  }
+ 
   const btnDiscovery = () => {
-    let instaPage = 'https://www.instagram.com/restaurantyamamoto?igsh=dnBzamtzZWV5OG5k'
+    let instaPage = 'https://www.instagram.com/restaurantyamamoto'
     const loc = document.location;
-    loc.assign(instaPage);
+    //window.location.replace(instaPage);
+    window.location.href = instaPage;
+    //loc.assign(instaPage);
   }
 
   const submit = (subscribe) => {
@@ -101,8 +98,15 @@ function App() {
     // });
   }
 
-  const successConection = (BASE_URL, handleSubmit, btnDiscovery, styleMainContainerSuccess) => {
-
+  const SuccessConection = () => {
+    const styleMainContainerSuccess = {
+      textAlign: 'center',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: '1rem',
+      justifyContent: 'center'
+    }
     return (<div style={styleMainContainerSuccess} >
       <img src={`${BASE_URL}/logo.png`} style={{ width: "230px", height: "120px" }} />
       <Paper id="success-pop" className='formPaper' square={false} elevation={3}>
@@ -128,13 +132,14 @@ function App() {
               className='btn-form'
               size="large"
               variant="outlined"
-              color="#262626">
+              color="#262626"
+              onClick={() => window.location.href = 'https://www.google.com'}
+            >
               Cerrar
             </Button>
             <Button
               className='btn-form'
-              onClick={btnDiscovery}
-              type="submit"
+              onClick={() => window.location.href = 'https://www.instagram.com/restaurantyamamoto'}
               size="large"
               variant="contained"
               color="primary">
@@ -147,7 +152,7 @@ function App() {
     </div>)
   }
 
-  const errorConection = (handleSubmit, BASE_URL) => {
+  const ErrorConnection = () => {
 
     return (
       <Paper id="success-pop" className='formPaper' square={false} elevation={3}>
@@ -213,7 +218,7 @@ function App() {
     e.preventDefault();
     if (!isValidForm()) return;
     const url = 'http://10.10.0.1/login';
-
+    const url2 = 'http://10.10.0.1/status';
     const data = new URLSearchParams({
       username,
       password,
@@ -230,12 +235,29 @@ function App() {
         },
         body: data.toString(),
       });
+      const response2 = await fetch(url2, {
+        //mode: 'no-cors',
+        method: "POST",
+        headers: {
+          //"Content-Type": "application/json",
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: data.toString(),
+      });
       console.log("martin response", response);
+      console.log("martin response 2", response2);
+      if(response2.url === url) {
+        setShowError(true);
+      } else if(response2.url === url2 && response2.status === 200) {
+        setShowSuccess(true);
+        submit(subscribe);
+      }
       setIsLoading(false);
       setErrorKey('');
+      
     } catch (error) {
       setIsLoading(false);
-      submit(subscribe);
+      setShowError(true);
       setErrorKey('');
       console.error("Error during login:", error);
     }
@@ -268,12 +290,14 @@ function App() {
   return (
     <>
       {isLoading && <Loader />}
-
+      {showError && <ErrorConnection />}
+      {showSuccess && <SuccessConection />}
+      {/*Aqui hay que poner el render del error, ya que no importa lo que responda mailchimp*/}
       <MailchimpSubscribe
         url={mailchimp_url}
         render={({ subscribe, status, message }) => (
           <>
-            {status == null && (
+            {status == null && (!showError) && (
               <div id="main-container" style={{ ...styleMainContainer }} >
 
                 <div style={{ textAlign: 'center' }}>
@@ -379,9 +403,10 @@ function App() {
 
               </div>
             )}
-            {status === 'loading' && <Loader />}
-            {status === 'error' && errorConection(handleSubmit, BASE_URL, message)}
-            {status === 'success' && successConection(BASE_URL, handleSubmit, btnDiscovery, styleMainContainerSuccess)}
+            {console.log("martin subscribe", status)}
+            {/* {status === 'loading' && <Loader />}
+            {status === 'error' && ErrorConnection(handleSubmit, BASE_URL, message)}
+            {status === 'success' && SuccessConection(BASE_URL, handleSubmit, btnDiscovery, styleMainContainerSuccess)} */}
           </>
 
         )}
