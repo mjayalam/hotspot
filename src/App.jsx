@@ -286,7 +286,6 @@ function App() {
                     <Modal
                       open={termsandConditions}
                       onClose={handleCloseTermsandConditions}
-                      closeAfterTransition
                       aria-labelledby="transition-modal-title"
                       aria-describedby="transition-modal-description"
                       sx={{
@@ -297,7 +296,7 @@ function App() {
 
                       }}
                     >
-                      <Fade in={open}>
+                      
                         <Box sx={style}>
                           <h3>Términos y Condiciones del Portal de Acceso Wi-Fi de Yamamato Restaurante Japonés </h3> <br></br>
                           Bienvenido al servicio gratuito de red inalámbrica para huéspedes de Yamamato Restaurante Japonés (en adelante, "Yamamato", "nosotros" o "nuestro"). Este servicio proporciona acceso temporal a internet desde su dispositivo personal (computadora, tableta o móvil) mientras se encuentra en el restaurante. Al acceder a nuestra red Wi-Fi (la “Red”), usted acepta estos Términos y Condiciones. Si no está de acuerdo, no podrá utilizar la Red.
@@ -343,13 +342,8 @@ function App() {
                           El acceso a internet proporcionado por Yamamato es una cortesía y está sujeto a las limitaciones de seguridad inherentes a cualquier red pública. Al utilizar este servicio, usted reconoce los riesgos asociados y asume la responsabilidad por su uso.
                           Gracias por visitar Yamamato Restaurante Japonés.
                           Esperamos que disfrute de nuestra conexión Wi-Fi y tenga una experiencia gastronómica excepcional.
-
-
                         </Box>
-                      </Fade>
                     </Modal>
-
-
                   </Box>
                 </Paper>
 
