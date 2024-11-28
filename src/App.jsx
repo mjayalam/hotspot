@@ -349,7 +349,7 @@ function App() {
 
               </div>
             )}
-            {console.log("martin subscribe", status)}
+            {/* {console.log("martin subscribe", status)} */}
             {/* {status === 'loading' && <Loader />}
             {status === 'error' && ErrorConnection(handleSubmit, BASE_URL, message)}
             {status === 'success' && SuccessConection(BASE_URL, handleSubmit, btnDiscovery, styleMainContainerSuccess)} */}
