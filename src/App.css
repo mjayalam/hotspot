@@ -1,10 +1,24 @@
-.css-1blp12k-MuiInputBase-root-MuiOutlinedInput-root{
+.css-1gtchvp-MuiPaper-root{
+  background: #F7F7F8;
+}
+
+
+.div-logos {
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.css-4bojcr-MuiInputBase-root-MuiOutlinedInput-root {
   border-radius: 10px !important;
 }
-.css-4bojcr-MuiInputBase-root-MuiOutlinedInput-root{
-  border-radius: 10px !important;
+
+.btn-formulario {
+  text-transform: capitalize !important;
 }
-.css-s0w8ce{
+
+
+.css-s0w8ce {
   text-align: justify !important;
   height: 80% !important;
   width: 70% !important;
@@ -12,78 +26,134 @@
   color: #333333 !important;
   overflow: scroll !important;
 }
-.welcome-div {
-  margin-top: 4rem;
-}
-.showForm{
+
+.showForm {
   display: none;
 }
 
-form#error-conection{
+form#error-conection {
   align-items: center !important;
   gap: 0 !important;
+  max-width: 350px;
 }
+
 .welcome-title {
   font-size: 2.4rem;
   font-weight: 700;
-  line-height: 30.96px;
+  line-height: 10.96px;
 }
 
-.error-message{
+.error-message {
+  font-family: DM Sans;
+font-size: 14px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: -0.4099999964237213px;
+text-align: center;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+
   border-bottom: 1px solid #E4E4E4;
   padding-bottom: 1rem;
 }
+
 .welcome-subtitle {
   font-size: 1rem;
   font-weight: 450;
   line-height: 3.36px;
 }
 
+.main-container-success {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  justify-content: center;
+}
+
 .welcome-subtitle-pop {
-  font-size: 0.9rem;
-  font-weight: 450;
-  line-height: 21px;
-  font-family: 'DM Sans', sans-serif;
+  font-family: DM Sans;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20.83px;
+  letter-spacing: -0.4100000858306885px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #4D4D4D;
+}
+
+.logo-size {
+  width: 289px;
+  height: 147px;
 }
 
 .text-tems {
-  /* font-family: DM Sans; */
+  font-family: DM Sans !important;
   font-size: 12px;
-  font-weight: 400;
   line-height: 15.62px;
   letter-spacing: -0.4100000858306885px;
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   color: #797979;
+  margin: 0;
 }
 
 .terms-and-conditions {
+  margin-left: -5px !important;
+  font-family: DM Sans !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  line-height: 15.62px;
+  letter-spacing: -0.4100000858306885px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #797979 !important;
   text-decoration: underline !important;
   text-decoration-line: underline !important;
   text-decoration-style: solid !important;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  font-size: 12px !important;
-  color: #797979 !important;
+
+  text-transform: capitalize !important;
 }
 
 form#principal-form {
-  max-width: 400px;
+  max-width: 450px;
 }
 
 .css-1nvvmwq {
-  padding: 1rem 2rem !important;
+  padding: 1.4rem !important;
+  padding-bottom: 1rem !important;
+  gap: 22px;
+}
+
+.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input {
+  color: #393939 !important;
+  font-family: Circular std !important;
+}
+
+.css-2u11ia-MuiInputBase-input-MuiOutlinedInput-input {
+  font-family: Circular std !important;
+  color: #393939 !important;
 }
 
 .form-title {
-  color: #E12F32;
-  font-size: 23px;
+  font-family: Circular Std;
+  font-size: 28px;
   font-weight: 700;
+  line-height: 5.42px;
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  font-family: Poppins;
+
+  color: #E12F32;
+  font-family: Circular std;
+  width: 100%;
+
 }
 
 .text-red {
@@ -92,6 +162,8 @@ form#principal-form {
 
 .font-size-checkbox {
   color: #797979;
+
+  font-family: Circular std !important;
 }
 
 .css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input {
@@ -109,10 +181,7 @@ form#principal-form {
 #root {
   display: flex;
   flex-direction: row;
-  font-family: Poppins;
   justify-content: space-between;
-  padding: 10px;
-  height: 94vh;
   align-items: center;
 }
 
@@ -171,7 +240,7 @@ form#principal-form {
 }
 
 div#success-pop {
-  max-width: 510px;
+  max-width: 616.75px;
   text-align: center;
   justify-content: center;
   display: flex;
@@ -188,13 +257,24 @@ div#error-pop {
 }
 
 .error-title {
-
+  font-family: DM Sans;
   font-size: 20px;
   font-weight: 600;
   line-height: 23px;
   text-align: center;
   text-underline-position: from-font;
-  text-decoration-skip-ink: none;
+  text-decoration-skip-ink: none; 
+
+}
+
+.css-nqstft {
+  gap: 0 !important;
+}
+
+.logo-form {
+  width: 289px;
+  height: 147px;
+  margin-bottom: 1.5rem;
 
 }
 
@@ -205,16 +285,16 @@ div#error-pop {
   }
 
   div#success-pop {
-    max-width: 510px;
+    max-width: 616.75px;
     text-align: center;
     justify-content: center;
     display: flex;
     align-items: center;
-  
+
   }
 
   .css-nqstft {
-    gap: 0 !important;
+    padding: 1rem 2rem;
   }
 
   .img-logo-pop {
@@ -223,9 +303,49 @@ div#error-pop {
   }
 }
 
-@media (width <=400px) {
+@media (width <=430px) {
   #root {
     justify-content: center;
+  }
+
+  .text-tems {
+    margin-top: -0.7rem;
+  }
+
+  .form-title {
+    font-size: 20px;
+
+  }
+
+  .title-form {
+    font-family: Circular std;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 0px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+  }
+
+  .subtitle-form {
+    font-family: Circular std;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+  }
+
+  .logo-form {
+    width: 161px;
+    height: 82px;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  div#success-pop {
+    margin-bottom: 10rem;
   }
 
   .btn-form {
@@ -233,9 +353,6 @@ div#error-pop {
     line-height: 1.3 !important;
   }
 
-  .welcome-title {
-    font-size: 1rem;
-  }
 
   .welcome-subtitle {
     font-size: 0.9rem;
@@ -254,10 +371,55 @@ div#error-pop {
   .img-logo-pop {
     width: 100% !important;
   }
+
+  .div-logos{
+    display: flow;
+    align-self: flex-end;
+    margin-bottom: -2rem;
+  }
+  .logo-size {
+    width: 161px !important;
+    height: 82px !important;
+
+
+  }
+  .css-1nvvmwq {
+   
+    gap: 16px !important;
+  }
+
+  .main-container-success {
+
+    gap: 4rem;
+  }
 }
 
 .error-text {
   margin: 0;
   font-size: 0.5rem;
   color: #E73A4E;
+}
+
+div#error-pop{
+  border-radius: 20px !important;
+}
+
+.termsModal{
+  font-family: DM Sans;
+  color: #333333;
+}
+
+.css-1blp12k-MuiInputBase-root-MuiOutlinedInput-root {
+  border-radius: 10px !important;
+  font-family: DM Sans !important;
+  color: #393939 !important;
+}
+.css-1q55ijt-MuiInputBase-input-MuiOutlinedInput-input{
+  color: #393939 !important;
+  font-family: DM Sans !important;
+}
+
+
+div#success-pop{
+  border-radius: 20px !important;
 }

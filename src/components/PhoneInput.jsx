@@ -31,7 +31,7 @@ export const PhoneInputMUI = ({ value, onChange, ref, ...restProps }) => {
     <TextField
       ref={ref}
       variant="outlined"
-      label="Número de telefono"
+      label="Número de teléfono"
       color="primary"
       placeholder="Telefono"
       required
