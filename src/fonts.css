@@ -1,7 +1,7 @@
 /* src/assets/fonts/fonts.css */
 @font-face {
     font-family: 'Poppins';
-    src: url('/src/assets/fonts/DM_Sans/DMSans-Italic-VariableFont_opsz\,wght.ttf') format('truetype'),
+    src: url('/src/assets/fonts/DM_Sans/DMSans-Italic-VariableFont_opsz,wght.ttf') format('truetype'),
          url('/src/assets/fonts/Poppins-Medium.ttf') format('truetype');
   
     font-style: normal; /* Cambia según el estilo */
@@ -11,7 +11,7 @@
 @font-face {
      font-family: 'DM Sans';
      src: 
-          url('/src/assets/fonts/DM_Sans/DMSans-VariableFont_opsz\,wght.ttf') format('truetype');
+          url('/src/assets/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf') format('truetype');
    
      font-style: Regular 400; /* Cambia según el estilo */
    }
