@@ -56,6 +56,7 @@ function App() {
       <img className='logo-size' src={`${BASE_URL}/logo.png`} />
       <Paper id="success-pop" className='formPaper' square={false} elevation={3}>
         <Box
+          className='success-box'
           component="form"
           sx={{
             display: 'flex',
@@ -67,7 +68,7 @@ function App() {
 
           }}
         >
-          <h1 className={"welcome-title form-title"}>¡Conexión Exitosa!</h1>
+          <h1 className={"welcome-title form-title-conection "}>¡Conexión Exitosa!</h1>
           <p className={"welcome-subtitle-pop"}>Disfruta de tu experiencia en Yamamoto al máximo.</p>
           {/* <img className='img-logo-pop '
             src={`${BASE_URL}/promo.png`}
@@ -126,6 +127,7 @@ function App() {
           <h1 className={"error-title"}>Error de Conexión</h1>
           <p className={"error-message"}> No es posible completar el registro o la conexión en este momento. Inténtalo nuevamente más tarde. </p>
           <Button
+          className='ok-btn'
             size="large"
             variant="text"
             color="#262626"
@@ -254,8 +256,8 @@ function App() {
     <>
 
       {isLoading && <Loader />}
-      {showSuccess && <ErrorConnection resetForm={resetForm} setShowError={setShowError} />}
-      {showError && <SuccessConection />}
+      {showError && <ErrorConnection resetForm={resetForm} setShowError={setShowError} />}
+      {showSuccess  && <SuccessConection />}
       <MailchimpSubscribe
         url={mailchimp_url}
         render={({ subscribe, status, message }) => (
@@ -350,7 +352,7 @@ function App() {
                     color="primary">
                       Conectarme
                     </Button>
-                    <p className='text-tems'>Al registrarse, aceptas todos los <Button className='terms-and-conditions' onClick={handleTermsandConditions}> Términos y Condiciones. </Button></p>
+                    <p className='text-tems'>Al registrarse, aceptas todos los <span className='terms-and-conditions' onClick={handleTermsandConditions}> Términos y Condiciones. </span></p>
                     <Modal
                       open={termsandConditions}
                       onClose={handleCloseTermsandConditions}

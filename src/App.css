@@ -16,7 +16,11 @@
 .btn-formulario {
   text-transform: capitalize !important;
 }
-
+.ok-btn{
+  font-family: DM Sans !important;
+  font-weight: 600  !important;
+  font-size: 16px !important;
+}
 
 .css-s0w8ce {
   text-align: justify !important;
@@ -102,7 +106,6 @@ text-decoration-skip-ink: none;
 }
 
 .terms-and-conditions {
-  margin-left: -5px !important;
   font-family: DM Sans !important;
   font-size: 12px !important;
   font-weight: 400 !important;
@@ -117,8 +120,10 @@ text-decoration-skip-ink: none;
   text-decoration-style: solid !important;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+}
 
-  text-transform: capitalize !important;
+.terms-and-conditions:hover {
+  cursor: pointer;
 }
 
 form#principal-form {
@@ -140,7 +145,12 @@ form#principal-form {
   font-family: Circular std !important;
   color: #393939 !important;
 }
-
+.form-title-conection{
+  font-family: Circular Std !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: #E12F32 !important;
+}
 .form-title {
   font-family: Circular Std;
   font-size: 28px;
@@ -149,13 +159,26 @@ form#principal-form {
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-
   color: #E12F32;
-  font-family: Circular std;
   width: 100%;
-
+}
+.css-hvjq6j-MuiFormLabel-root-MuiInputLabel-root{
+  font-family: DM Sans !important;
 }
 
+.css-1pzfmz2-MuiInputBase-input-MuiOutlinedInput-input{
+  color: #393939 !important;
+  font-family: DM Sans !important; 
+  font-size: 15px !important;
+}
+.css-4bojcr-MuiInputBase-root-MuiOutlinedInput-root{
+  color: #393939 !important;
+  font-family: DM Sans !important; 
+}
+.css-1rju2q6-MuiButtonBase-root-MuiMenuItem-root{
+  color: #393939 !important;
+  font-family: DM Sans !important; 
+}
 .text-red {
   color: #E12F32;
 }
@@ -209,7 +232,9 @@ form#principal-form {
 .MuiButton-containedPrimary {
   background-color: #262626 !important;
   color: #fff;
-  /* Cambia el color del texto */
+  font-family: DM Sans !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
 }
 
 /* .MuiBox-root {
@@ -217,9 +242,10 @@ form#principal-form {
 } */
 
 .MuiFormControlLabel-label {
-  font-size: 0.6rem !important;
+  font-size: 12px !important;
   font-weight: 400;
   color: #797979;
+  font-family: DM Sans !important; 
 
 }
 
@@ -331,6 +357,7 @@ div#error-pop {
     font-family: Circular std;
     font-size: 16px;
     line-height: 20px;
+    font-weight: 450px;
     text-align: center;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
@@ -417,9 +444,17 @@ div#error-pop{
 .css-1q55ijt-MuiInputBase-input-MuiOutlinedInput-input{
   color: #393939 !important;
   font-family: DM Sans !important;
+  font-size: 15px !important;
+}
+
+.css-1q55ijt-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill{
+  color: #393939 !important;
+}
+div#success-pop{
+  border-radius: 20px !important;
 }
 
 
-div#success-pop{
-  border-radius: 20px !important;
+form.success-box.MuiBox-root.css-nqstft {
+  padding: 2rem !important;
 }
