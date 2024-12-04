@@ -105,38 +105,42 @@ function App() {
     }
 
     return (
-      <Paper id="error-pop" className='formPaper' square={false} elevation={3}>
+      <div className="main-container-success">
+        <img className='logo-size' src={`${BASE_URL}/logo.png`} />
+        <Paper id="error-pop" className='formPaper' square={false} elevation={3}>
 
-        <Box
-          component="form"
-          id='error-conection'
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            width: '100%',
-            gap: '1rem',
-            margin: '0 auto',
-            padding: 2,
+          <Box
+            component="form"
+            id='error-conection'
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              width: '100%',
+              gap: '1rem',
+              margin: '0 auto',
+              padding: 2,
 
-          }}
-        >
-          <img
-            src={`${BASE_URL}/img-icono.png`}
-            style={{ height: '64px', width: '64px' }} />
-          <h1 className={"error-title"}>Error de Conexión</h1>
-          <p className={"error-message"}> No es posible completar el registro o la conexión en este momento. Inténtalo nuevamente más tarde. </p>
-          <Button
-          className='ok-btn'
-            size="large"
-            variant="text"
-            color="#262626"
-            onClick={handleErrorButton}
+            }}
           >
-            Ok
-          </Button>
-        </Box>
-      </Paper>
+            <img
+              src={`${BASE_URL}/img-icono.png`}
+              style={{ height: '64px', width: '64px' }} />
+            <h1 className={"error-title"}>Error de Conexión</h1>
+            <p className={"error-message"}> No es posible completar el registro o la conexión en este momento. Inténtalo nuevamente más tarde. </p>
+            <Button
+              className='ok-btn'
+              size="large"
+              variant="text"
+              color="#262626"
+              onClick={handleErrorButton}
+            >
+              Ok
+            </Button>
+          </Box>
+        </Paper>
+      </div>
+
     )
   }
   const errorsText = {
@@ -148,7 +152,7 @@ function App() {
   }
   const isValidForm = () => {
 
-    
+
     if (!nameRegex.test(name)) {
       setErrorKey('name');
       return false;
@@ -256,8 +260,8 @@ function App() {
     <>
 
       {isLoading && <Loader />}
-      {showError && <ErrorConnection resetForm={resetForm} setShowError={setShowError} />}
-      {showSuccess  && <SuccessConection />}
+      { showError && <ErrorConnection resetForm={resetForm} setShowError={setShowError} />}
+      { showSuccess  && <SuccessConection />}
       <MailchimpSubscribe
         url={mailchimp_url}
         render={({ subscribe, status, message }) => (
@@ -319,16 +323,16 @@ function App() {
                       className='f-input'
                       label="Correo electrónico"
                       type="email"
-                      value={email} 
+                      value={email}
                       variant="outlined"
                       fullWidth
                       onChange={handleOnChangeEmail}
                     />
-                    <PhoneInputMUI 
+                    <PhoneInputMUI
                       size="small"
-                      error={errorKey === 'phone'} 
-                      helperText={errorKey === 'phone' && errorsText[errorKey]} 
-                      ref={(phone) => (_phone = phone)} 
+                      error={errorKey === 'phone'}
+                      helperText={errorKey === 'phone' && errorsText[errorKey]}
+                      ref={(phone) => (_phone = phone)}
                       onChange={(phone) => {
                         if (phoneRegex.test(phone) && (phone.length - 1) >= 7) {
                           setErrorKey('');
@@ -342,14 +346,14 @@ function App() {
                       control={<Checkbox defaultChecked />}
                       label="Me gustaría recibir correos electrónicos de Yamamoto con ofertas exclusivas, promociones, novedades y ofertas de último minuto."
                     />
-                    <Button 
-                    size="medium"
-                    className='btn-formulario'
-                    onClick={(e) => {
-                      handleSubmit(e, subscribe, status);
-                    }} 
-                    variant="contained" 
-                    color="primary">
+                    <Button
+                      size="medium"
+                      className='btn-formulario'
+                      onClick={(e) => {
+                        handleSubmit(e, subscribe, status);
+                      }}
+                      variant="contained"
+                      color="primary">
                       Conectarme
                     </Button>
                     <p className='text-tems'>Al registrarse, aceptas todos los <span className='terms-and-conditions' onClick={handleTermsandConditions}> Términos y Condiciones. </span></p>
