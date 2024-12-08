@@ -175,6 +175,7 @@ function App() {
   const handleSubmit = async (e, subscribe) => {
     e.preventDefault();
     if (!isValidForm()) return;
+    setIsLoading(true);
     setErrorKey('');
 
     const url = 'http://10.10.0.1/login';
@@ -185,7 +186,6 @@ function App() {
     });
 
     try {
-      setIsLoading(true);
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -200,13 +200,16 @@ function App() {
         },
         body: data.toString(),
       });
-      //console.log("martin response", response);
-      //console.log("martin response 2", response2);
+      console.log("martin response", response);
+      console.log("martin response 2", response2);
       if (response2.url === url) {
         setShowError(true);
       } else if (response2.url === url2 && response2.status === 200) {
         setShowSuccess(true);
         submit(subscribe);
+        setTimeout(() => {
+          window.location.href = 'https://www.restauranteyamamoto.com';
+        },2500)
       }
       setIsLoading(false);
     } catch (error) {
@@ -261,6 +264,7 @@ function App() {
 
       {isLoading && <Loader />}
       { showError && <ErrorConnection resetForm={resetForm} setShowError={setShowError} />}
+      {console.log("martin", showSuccess, showError)}
       { showSuccess  && <SuccessConection />}
       <MailchimpSubscribe
         url={mailchimp_url}
@@ -424,9 +428,9 @@ function App() {
               </div>
             )}
             {console.log("martin subscribe", status)}
-            {status === 'loading' && <Loader />}
+            {/* {status === 'loading' && <Loader />}
             {status === 'error' && ErrorConnection(handleSubmit, BASE_URL, message)}
-            {status === 'success' && SuccessConection(BASE_URL, handleSubmit, btnDiscovery, styleMainContainerSuccess)}
+            {status === 'success' && SuccessConection(BASE_URL, handleSubmit, btnDiscovery, styleMainContainerSuccess)} */}
           </>
 
         )}
